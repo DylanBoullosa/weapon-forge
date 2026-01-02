@@ -430,7 +430,53 @@ int main() {
 				std::cout << "Invalid modifier type. Enter one of the following modifiers\n";
 			}
 		}
-		//PHASE 6 Weapon testing
+		//PHASE 6 Test fire
+		bool validTestFire = false;
+		std::string testingTarget;
+
+		while (!validTestFire) {
+			std::cout << "\n==========Target Testing==========\n";
+			std::cout << "Choose a testing target\n";
+			std::cout << "Drone\nArmored Bot\nEnemy Group\n";
+			std::cout << "Pick one: ";
+			std::getline(std::cin, testingTarget);
+
+			if (testingTarget == "Drone") {
+				std::cout << "Target selected: " << testingTarget << std::endl;
+				std::cout << "Light target detected, minimal resistance\n";
+				validTestFire = true;
+			}
+			else if (testingTarget == "Armored Bot") {
+				std::cout << "Target selected: " << testingTarget << std::endl;
+				std::cout << "Heavy target detected, damage reduced\n";
+				validTestFire = true;
+			}
+			else if (testingTarget == "Enemy Group") {
+				std::cout << "Target selected: " << testingTarget << std::endl;
+				std::cout << "Multiple targets detected, area effectivness increased\n";
+				validTestFire = true;
+			}
+			else {
+				std::cout << "Invalid testing target. Enter one of the following targets\n";
+			}
+		}
+		//PHASE 7 Weapon analysis
+		double damage = (powerLevel * 10);
+		double energyCost = (powerLevel * 5);
+		double effieciency = (damage/energyCost);
+
+		if (modifierType == "Power") {
+			damage *= 1.5;
+			energyCost *= 1.4;
+		}
+		else if (modifierType == "Control") {
+			damage *= .8;
+			energyCost *= .5;
+		}
+		else if (modifierType == "Speed") {
+			damage *= 1.1;
+			energyCost *= .9;
+		}
 
 	return 0;
 }
